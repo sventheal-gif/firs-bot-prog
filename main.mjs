@@ -34,6 +34,12 @@ client.on('messageCreate', (message) => {
         message.reply('🏓 pong!');
         console.log(`📝 ${message.author.tag} が ping コマンドを使用`);
     }
+
+    // もちもち金玉
+    if (message.content.toLowerCase() === 'しゅんぺいの金玉は？') {
+        message.reply('もちもち！ふかふか！');
+        console.log(`📝 ${message.author.tag} が しゅんぺいの金玉は？ コマンドを使用`);
+    }
 });
 
 // エラーハンドリング
