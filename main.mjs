@@ -28,12 +28,6 @@ client.once('ready', () => {
 client.on('messageCreate', (message) => {
     // Bot自身のメッセージは無視
     if (message.author.bot) return;
-    
-    // 「ping」メッセージに反応
-    if (message.content.toLowerCase() === 'ping') {
-        message.reply('🏓 pong!');
-        console.log(`📝 ${message.author.tag} が ping コマンドを使用`);
-    }
 
     // もちもち金玉
     if (message.content.toLowerCase() === 'しゅんぺいの金玉は？') {
@@ -42,11 +36,22 @@ client.on('messageCreate', (message) => {
     }
 
     // デカキャラ一覧
-    if (message.content.toLowerCase() === '!デカキャラ') {
+    if (message.content.toLowerCase().startsWith('!S')) {
         message.reply('ザンギ、マリーザ、本田');
         console.log(`📝 ${message.author.tag} が しゅんぺいの金玉は？ コマンドを使用`);
     }
 
+    //ニックネーム変更
+    if (message.content.toLowerCase().startsWith('!rank?')) {
+        let rank =message.content.toLowerCase().split('?');
+        if(rank.length === 1){
+            message.reply('!rank?ダイヤ1 のように入力してください');
+        }{
+        let name =message.member.displayName.split('rank：');
+        const member = await message.guild.member.fetch(message.author.id); 
+        await member.setNickname(name[0] + ' rank：' + rank[1]);
+        }
+   }
 });
 
 // エラーハンドリング
