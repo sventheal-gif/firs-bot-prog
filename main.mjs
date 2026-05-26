@@ -40,6 +40,13 @@ client.on('messageCreate', (message) => {
         message.reply('もちもち！ふかふか！');
         console.log(`📝 ${message.author.tag} が しゅんぺいの金玉は？ コマンドを使用`);
     }
+
+    // デカキャラ一覧
+    if (message.content.toLowerCase() === '!デカキャラ') {
+        message.reply('ザンギ、マリーザ、本田');
+        console.log(`📝 ${message.author.tag} が しゅんぺいの金玉は？ コマンドを使用`);
+    }
+
 });
 
 // エラーハンドリング
