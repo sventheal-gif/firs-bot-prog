@@ -18,6 +18,7 @@ const client = new Client({
     ],
 });
 
+
 // Botが起動完了したときの処理
 client.once('ready', () => {
     console.log(`🎉 ${client.user.tag} が正常に起動しました！`);
@@ -25,7 +26,7 @@ client.once('ready', () => {
 });
 
 // メッセージが送信されたときの処理
-client.on('messageCreate', (message) => {
+client.on('messageCreate', async (message) => {
     // Bot自身のメッセージは無視
     if (message.author.bot) return;
 
@@ -48,8 +49,7 @@ client.on('messageCreate', (message) => {
             message.reply('!rank?ダイヤ1 のように入力してください');
         }{
         let name =message.member.displayName.split('rank：');
-        const member = await message.guild.member.fetch(message.author.id); 
-        await member.setNickname(name[0] + ' rank：' + rank[1]);
+        await message.member.setNickname(name[0] + ' rank：' + rank[1]);
         }
    }
 });
