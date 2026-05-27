@@ -50,6 +50,7 @@ client.on('messageCreate', async (message) => {
         }{
         let name =message.member.displayName.split('rank：');
         await message.member.setNickname(name[0] + ' rank：' + rank[1]);
+        message.reply('変更完了→'+ name[0] + ' rank：' + rank[1]);
         }
    }
 });
